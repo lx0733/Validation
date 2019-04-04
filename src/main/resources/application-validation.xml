@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<!-- 错误码列表 -->
+	<errorCode>
+		<code code ="100" desc="校验不通过" />
+		<code code ="101" desc="时间超出范围" />
+	</errorCode>
+	
+	<!-- 校验不通过返回对象 -->
+	<return returnType="com.coship.ResultDto" returnCode="errorCode" returnDesc="errorMsg" />
+
+	<!-- 校验参数方案(可配置多个) -->
+	<validClass id="demoParam" class="com.param.demoParam" system="demo" group="demo">
+		<field name="desc" type="regexMatch" content="[0-9]*" code="100" />
+		<field name="score" type="range" min="0" max="100" />
+		<field name="sex" type="notNull" />
+		<field name="normal" type="assertTrue" />
+		<field name="exception" type="assertFalse" />
+		<field name="dynamicTime" type="dynamicTime" beginDistance="10000" endDistance="20000" />
+		<field name="fixedTime" type="fixedTime" begin="1554278383" end="1554278789" code="101" />
+	</validClass>
+</root>
